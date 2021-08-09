@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.product_pic {
+
+  height: 100px;
+
+}
+
+.btn {
+  color: azure;
+  text-decoration: none;
+}
