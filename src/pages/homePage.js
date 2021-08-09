@@ -20,7 +20,8 @@ export default function Homepage() {
     <Carousel/> 
     {data.map(product => (
     <div key={product.id} className="product-card">
-      <Card title = {product.title} />
+    
+      <Card className = "card" title = {product.title} url = {product.picture.name} price = {product.price} />
         
         {/* <div className="rating">{product.rating}</div>
         <h2>{product.title}</h2>

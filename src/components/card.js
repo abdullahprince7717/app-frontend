@@ -15,14 +15,17 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import "./css/card.css"
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    // paddingTop: '70px'
   },
   media: {
-    height: 0,
+    // height: 0,
     paddingTop: '56.25%', // 16:9
+    height: '100%'
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -37,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
+
 }));
 
 export default function ProductCard(props) {
@@ -44,15 +48,18 @@ export default function ProductCard(props) {
   const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <Card className={classes.root}>
+    <Card className= {`${classes.root} card `}  >
+      <CardHeader className = "card-header"
+        title={props.title}
+        subheader="Category"
+      />
       <CardMedia
         className={classes.media}
-        image="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-        title= {props.title}
+        image= {props.url}
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {props.title}
+        <Typography className = "card-price" variant="body2" color="textSecondary" component="p">
+          {props.price}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

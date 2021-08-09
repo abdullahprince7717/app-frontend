@@ -1,13 +1,29 @@
-
-
-.carousel {
+/* .carousel {
     margin-top: 50px;
     margin-bottom: 100px;
     height: 400px;
+} */
+
+.slider-wrapper {
+    height: 400px;
 }
 
-.thumbs-wrapper {
+.thumbs {
 
-    max-width: 400px;
-    margin: auto;
+    padding-left: 50px
+}
+
+.product-card {
+
+    display: inline-block;
+    max-width: 1700px;
+    margin:auto;
+    margin-right: 50px;
+    margin-top: 150px;
+    margin-left: 20px;        
+
+}
+
+.card-title {
+    text-decoration: none solid currentColor;
 }

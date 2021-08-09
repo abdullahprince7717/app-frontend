@@ -1,4 +1,10 @@
 .carousel {
-
+    margin-top: 50px;
+    margin-bottom: 100px;
     height: 400px;
+}
+
+.root {
+    max-height: 400px;
+
 }
