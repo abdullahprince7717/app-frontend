@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,19 +12,21 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://material-ui.com/">
+//         Your Website
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -46,8 +48,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function SignIn() {
+
   const classes = useStyles();
+  let history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      history.goBack();
+    }
+  }, [history]);
+
+  function login() {
+    console.log(email, password);
+    axios
+      .post("http://localhost:1337/auth/local",{
+        identifier: email,
+        password: password
+      })
+      .then(function (response) {
+        console.log(response);
+        localStorage.setItem("token", response.data.jwt);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        history.push("/");
+        console.log(response.data)
+      })
+      .catch(function (error) {
+        alert("unable to login");
+        console.log(error);
+      });
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -70,6 +103,9 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            
           />
           <TextField
             variant="outlined"
@@ -81,17 +117,20 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
           <Button
-            type="submit"
+            // type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={() => login()}
           >
             Sign In
           </Button>
@@ -102,7 +141,7 @@ export default function SignIn() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
@@ -110,7 +149,7 @@ export default function SignIn() {
         </form>
       </div>
       <Box mt={8}>
-        <Copyright />
+        {/* <Copyright /> */}
       </Box>
     </Container>
   );

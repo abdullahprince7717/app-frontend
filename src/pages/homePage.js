@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import useFetch from '../hooks/useFetch'
 import { Link } from 'react-router-dom'
 import Carousel from "../components/carousel";
@@ -7,6 +7,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './css/homepage.css'
 
 export default function Homepage() {
+  const [button, setButton] = useState("");
+
   const { loading, error, data } = useFetch('http://localhost:1337/products')
 
   if (loading) return <p>Loading...</p>

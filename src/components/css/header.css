@@ -1,4 +1,10 @@
-Link{
+Link {
+    color: azure;
+    text-decoration: none;
+}
+
+.btn {
+
     color: azure;
     text-decoration: none;
 }
