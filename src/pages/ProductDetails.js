@@ -39,7 +39,7 @@ export default function ReviewDetails() {
             <
             p > {
                 data.body
-            } < /p> <
-            /div>
+            } < /p> < /
+            div >
         )
     }

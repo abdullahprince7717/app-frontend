@@ -1,9 +1,8 @@
-import Header from '../components/cart_components/CartHeader';
+
 import Main from '../components/cart_components/Main';
 import Basket from '../components/cart_components/Basket';
 import useFetch from '../hooks/useFetch'
 // import data from './data';
-
 import { useState } from 'react';
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -13,7 +12,6 @@ function App() {
   if (error) return <p>Error :( </p>
 
   console.log(data)
-  const { products } = data;
   
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
@@ -41,9 +39,8 @@ function App() {
   };
   return (
     <div className="App">
-      <Header countCartItems={cartItems.length}></Header>
       <div className="row">
-        <Main products={products} onAdd={onAdd}></Main>
+        <Main products= {data} onAdd={onAdd}></Main>
         <Basket
           cartItems={cartItems}
           onAdd={onAdd}
