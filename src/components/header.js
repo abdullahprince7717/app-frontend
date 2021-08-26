@@ -78,7 +78,7 @@ export default function ButtonAppBar() {
                 Login
               </Button>
               <Button href="/cart" color="inherit">
-                <ShoppingCartOutlinedIcon />
+                <ShoppingCartOutlinedIcon href = "/cart" />
               </Button>
             </div>
           )}

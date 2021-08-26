@@ -6,6 +6,7 @@ import ProductDetails from "./pages/ProductDetails";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import Header from "./components/header";
+import Cart from "./pages/cart";
 import "./index.css"
 
 function App() {
@@ -36,6 +37,10 @@ function App() {
 
         <Route path = '/profile'> 
         < Profile />
+        </Route>
+        
+        <Route path = '/cart'> 
+        < Cart />
         </Route>
         
       
